@@ -5,6 +5,10 @@ import { Link } from "react-router";
 
 export default class Layout extends React.Component
 {
+  navigate(args)
+  {
+    this.props.history.replaceState(null, args);
+  }
   constructor ()
   {
     super();
@@ -27,7 +31,10 @@ export default class Layout extends React.Component
       return (
         <div>
           <div>
-            <Link to="p2" >Page 2</Link>
+
+            <a onClick={this.navigate.bind(this, "/")}>Page 1 </a>
+            <a onClick={this.navigate.bind(this, "/p2")}>Page 2</a>
+
           </div>
           <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
           {this.props.children}
